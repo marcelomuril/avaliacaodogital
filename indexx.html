@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Plano de Ação para Inovação Avaliativa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flow-card {
+            border-left: 4px solid #1976D2;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .flow-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .flow-arrow {
+            display: none;
+        }
+        @media (min-width: 1024px) {
+            .flow-arrow {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+                color: #90CAF9;
+            }
+        }
+        .gemini-card {
+            min-height: 300px;
+        }
+        .gemini-output {
+            white-space: pre-wrap;
+            background-color: #f8fafc;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1976D2;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Estilos para Impressão */
+        @media print {
+            body {
+                background-color: #fff !important;
+                color: #000 !important;
+                font-size: 10pt;
+            }
+            header, footer, .flow-arrow, #gemini-section {
+                display: none !important;
+            }
+            main, section, div {
+                box-shadow: none !important;
+                border: none !important;
+                page-break-inside: avoid;
+            }
+            .container {
+                width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .grid {
+                display: block !important;
+            }
+            .bg-white, .bg-\[\#00449E\] {
+                 background-color: #fff !important;
+            }
+            h1, h2, h3, p {
+                color: #000 !important;
+            }
+            .chart-container {
+                height: 250px !important;
+                max-height: 250px !important;
+                page-break-inside: avoid;
+            }
+            section {
+                margin-bottom: 2rem !important;
+            }
+            .text-7xl {
+                font-size: 4rem !important;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#00449E]">Inovação no Processo Avaliativo</h1>
+            <p class="text-lg text-gray-600 mt-2">Um plano de ação visual para transformar a avaliação na nossa escola.</p>
+        </header>
+
+        <main class="space-y-12">
+            
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <div class="md:col-span-2 bg-white rounded-lg shadow-md p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-[#005CB9] mb-4">O Desafio e a Solução</h2>
+                    <p class="text-gray-600 mb-6">O tempo gasto em processos manuais de correção limita o potencial de análise pedagógica do professor. Nosso projeto visa reverter este quadro, automatizando tarefas para que o foco seja o aluno e a aprendizagem.</p>
+                    <p class="text-gray-600">Este plano de ação foi desenhado para capacitar nosso corpo docente, otimizar processos e, principalmente, enriquecer a jornada de aprendizagem dos nossos estudantes através da tecnologia.</p>
+                </div>
+                <div class="bg-[#00449E] text-white rounded-lg shadow-lg p-8 text-center flex flex-col justify-center h-full">
+                    <p class="text-lg font-semibold">Reduza em até</p>
+                    <p class="text-7xl font-bold my-2">70%</p>
+                    <p class="text-lg font-semibold">o tempo gasto com correções manuais.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-3xl font-bold text-center text-[#005CB9] mb-8">O Plano de Implementação em 4 Fases</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-9 gap-8">
+                    
+                    <div class="lg:col-span-2 flow-card bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-bold text-[#1976D2] mb-2">Fase 1: Diagnóstico</h3>
+                        <p class="text-sm font-semibold text-gray-500 mb-4">(2 Semanas)</p>
+                        <p class="text-gray-600">Apresentar o projeto, demonstrar a viabilidade e coletar dados para entender o cenário atual e as necessidades de formação.</p>
+                    </div>
+
+                    <div class="flow-arrow">&#10140;</div>
+
+                    <div class="lg:col-span-2 flow-card bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-bold text-[#1976D2] mb-2">Fase 2: Capacitação</h3>
+                        <p class="text-sm font-semibold text-gray-500 mb-4">(1 Mês)</p>
+                        <p class="text-gray-600">Desenvolver as competências técnicas do corpo docente para o uso autônomo e eficaz das ferramentas digitais de avaliação.</p>
+                    </div>
+
+                    <div class="flow-arrow">&#10140;</div>
+
+                    <div class="lg:col-span-2 flow-card bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-bold text-[#1976D2] mb-2">Fase 3: Implementação</h3>
+                        <p class="text-sm font-semibold text-gray-500 mb-4">(Contínua)</p>
+                        <p class="text-gray-600">Assegurar a aplicação prática do conhecimento adquirido, com suporte técnico contínuo e um projeto-piloto para iniciar o uso.</p>
+                    </div>
+                </div>
+                 <div class="flex justify-center my-4 lg:my-0">
+                    <div class="flow-arrow transform rotate-90 lg:rotate-0">&#10140;</div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-9 gap-8">
+                     <div class="lg:col-span-4"></div>
+                     <div class="lg:col-span-2 flow-card bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-bold text-[#1976D2] mb-2">Fase 4: Consolidação</h3>
+                        <p class="text-sm font-semibold text-gray-500 mb-4">(Contínua)</p>
+                        <p class="text-gray-600">Avaliar o impacto do projeto, promover a melhoria contínua e consolidar a nova cultura avaliativa na instituição.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-bold text-center text-[#005CB9] mb-4">Evolução da Proficiência Docente</h2>
+                    <p class="text-center text-gray-600 mb-6">Este gráfico projeta o aumento esperado na confiança e habilidade dos professores com as ferramentas digitais ao longo do projeto.</p>
+                    <div class="chart-container">
+                        <canvas id="proficiencyChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-bold text-center text-[#005CB9] mb-4">Otimização do Tempo do Professor</h2>
+                    <p class="text-center text-gray-600 mb-6">Visualização da realocação do tempo gasto em atividades avaliativas, antes e depois da implementação do projeto.</p>
+                    <div class="chart-container">
+                        <canvas id="timeChart"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="gemini-section">
+                <h2 class="text-3xl font-bold text-center text-[#005CB9] mb-8">Ferramentas Interativas com IA ✨</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-md p-6 gemini-card flex flex-col">
+                        <h3 class="text-xl font-bold text-[#1976D2] mb-2">Gerador de Questões</h3>
+                        <p class="text-gray-600 mb-4">Precisa de inspiração para uma avaliação? Insira o tópico e a série, e deixe a IA criar perguntas para você.</p>
+                        <input type="text" id="question-topic" placeholder="Ex: Revolução Francesa, 8º ano" class="w-full p-2 border border-gray-300 rounded-md mb-4">
+                        <button id="generate-questions-btn" class="w-full bg-[#1976D2] text-white font-bold py-2 px-4 rounded-md hover:bg-[#005CB9] transition duration-300">
+                            ✨ Gerar Perguntas
+                        </button>
+                        <div id="questions-output" class="gemini-output mt-auto">Clique no botão para gerar perguntas.</div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6 gemini-card flex flex-col">
+                        <h3 class="text-xl font-bold text-[#1976D2] mb-2">Assistente de Comunicação</h3>
+                        <p class="text-gray-600 mb-4">Gere um rascunho de e-mail para comunicar as fases do projeto aos professores de forma clara e profissional.</p>
+                        <select id="communication-phase" class="w-full p-2 border border-gray-300 rounded-md mb-4">
+                            <option value="Fase 1: Diagnóstico">Fase 1: Diagnóstico</option>
+                            <option value="Fase 2: Capacitação">Fase 2: Capacitação</option>
+                            <option value="Fase 3: Implementação">Fase 3: Implementação</option>
+                            <option value="Fase 4: Consolidação">Fase 4: Consolidação</option>
+                        </select>
+                        <button id="generate-communication-btn" class="w-full bg-[#1976D2] text-white font-bold py-2 px-4 rounded-md hover:bg-[#005CB9] transition duration-300">
+                           ✨ Gerar Comunicado
+                        </button>
+                        <div id="communication-output" class="gemini-output mt-auto">Selecione uma fase e clique no botão.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-3xl font-bold text-center text-[#005CB9] mb-8">Resultados Esperados e Medição de Sucesso</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div class="flex flex-col items-center">
+                        <span class="text-5xl text-[#1976D2] mb-3">&#128187;</span>
+                        <h3 class="text-xl font-bold mb-2">Professores Capacitados</h3>
+                        <p class="text-gray-600">Corpo docente autônomo e confiante para criar e analisar avaliações digitais.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-5xl text-[#1976D2] mb-3">&#128202;</span>
+                        <h3 class="text-xl font-bold mb-2">Decisões Baseadas em Dados</h3>
+                        <p class="text-gray-600">Uso de relatórios para identificar lacunas de aprendizagem e orientar o planejamento.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-5xl text-[#1976D2] mb-3">&#128172;</span>
+                        <h3 class="text-xl font-bold mb-2">Feedback Ágil e Eficaz</h3>
+                        <p class="text-gray-600">Alunos recebem retorno instantâneo, potencializando a aprendizagem contínua.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-5xl text-[#1976D2] mb-3">&#127941;</span>
+                        <h3 class="text-xl font-bold mb-2">Cultura de Inovação</h3>
+                        <p class="text-gray-600">Consolidação de uma prática avaliativa moderna, formativa e contínua na escola.</p>
+                    </div>
+                </div>
+            </section>
+
+             <section class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-center text-[#005CB9] mb-4">Entregáveis por Fase do Projeto</h2>
+                <p class="text-center text-gray-600 mb-6">O sucesso de cada fase é medido por entregáveis concretos, que garantem o avanço e a documentação do projeto.</p>
+                <div class="chart-container mx-auto" style="max-width: 800px;">
+                    <canvas id="deliverablesChart"></canvas>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-12 pt-8 border-t border-gray-300">
+            <p class="text-gray-600">&copy; 2025 Projeto de Inovação Pedagógica. Transformando a educação, um dado de cada vez.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#374151',
+                        font: {
+                            family: "'Inter', sans-serif"
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { 
+                        color: '#4B5563',
+                        font: {
+                            family: "'Inter', sans-serif"
+                        }
+                    },
+                    grid: {
+                        color: '#E5E7EB'
+                    }
+                },
+                x: {
+                    ticks: { 
+                        color: '#4B5563',
+                        font: {
+                            family: "'Inter', sans-serif"
+                        }
+                    },
+                    grid: {
+                        color: '#E5E7EB'
+                    }
+                }
+            }
+        };
+        
+        const processLabels = (labels) => {
+            const maxLength = 16;
+            return labels.map(label => {
+                if (label.length <= maxLength) {
+                    return label;
+                }
+                const words = label.split(' ');
+                let lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).length > maxLength) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine += ' ' + word;
+                    }
+                });
+                lines.push(currentLine.trim());
+                return lines.filter(line => line.length > 0);
+            });
+        };
+
+        const proficiencyCtx = document.getElementById('proficiencyChart').getContext('2d');
+        new Chart(proficiencyCtx, {
+            type: 'line',
+            data: {
+                labels: ['Início', 'Fase 1', 'Fase 2', 'Fase 3', 'Fase 4'],
+                datasets: [{
+                    label: 'Proficiência Docente',
+                    data: [15, 30, 75, 85, 95],
+                    borderColor: '#1976D2',
+                    backgroundColor: 'rgba(25, 118, 210, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: { ...commonChartOptions }
+        });
+
+        const timeCtx = document.getElementById('timeChart').getContext('2d');
+        new Chart(timeCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Correção Manual', 'Análise Pedagógica', 'Criação de Atividades'],
+                datasets: [{
+                    label: 'Antes',
+                    data: [60, 15, 25],
+                    backgroundColor: ['#00449E', '#42A5F5', '#90CAF9'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                },
+                {
+                    label: 'Depois',
+                    data: [10, 50, 40],
+                    backgroundColor: ['#00449E', '#42A5F5', '#90CAF9'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: '#374151',
+                            font: {
+                                family: "'Inter', sans-serif"
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback,
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const deliverablesCtx = document.getElementById('deliverablesChart').getContext('2d');
+        new Chart(deliverablesCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Fase 1: Diagnóstico', 'Fase 2: Capacitação', 'Fase 3: Implementação', 'Fase 4: Consolidação'],
+                datasets: [{
+                    label: 'Número de Entregáveis Chave',
+                    data: [3, 2, 3, 3],
+                    backgroundColor: ['#90CAF9', '#42A5F5', '#1976D2', '#005CB9'],
+                    borderColor: '#00449E',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                           stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+
+        // Gemini API Features
+        const questionsBtn = document.getElementById('generate-questions-btn');
+        const questionsOutput = document.getElementById('questions-output');
+        const questionsTopic = document.getElementById('question-topic');
+        
+        const communicationBtn = document.getElementById('generate-communication-btn');
+        const communicationOutput = document.getElementById('communication-output');
+        const communicationPhase = document.getElementById('communication-phase');
+
+        const apiKey = ""; 
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+        async function callGeminiAPI(prompt, outputElement, buttonElement) {
+            outputElement.innerHTML = '<div class="loader"></div>';
+            buttonElement.disabled = true;
+            
+            const payload = {
+                contents: [{
+                    parts: [{ text: prompt }]
+                }]
+            };
+
+            try {
+                let response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API request failed with status ${response.status}`);
+                }
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    outputElement.innerText = text;
+                } else {
+                    outputElement.innerText = 'Não foi possível obter uma resposta válida da IA. Verifique o console para mais detalhes.';
+                    console.error('Unexpected API response structure:', result);
+                }
+
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                outputElement.innerText = 'Ocorreu um erro ao tentar gerar o conteúdo. Por favor, tente novamente mais tarde.';
+            } finally {
+                buttonElement.disabled = false;
+            }
+        }
+
+        questionsBtn.addEventListener('click', () => {
+            const topic = questionsTopic.value;
+            if (!topic) {
+                questionsOutput.innerText = 'Por favor, insira um tópico.';
+                return;
+            }
+            const prompt = `Crie 3 perguntas de múltipla escolha para uma avaliação sobre o tema "${topic}". As perguntas devem ser adequadas para o público-alvo indicado. Para cada pergunta, forneça 4 alternativas (A, B, C, D) e indique a resposta correta no final. Formate a saída de forma clara e organizada.`;
+            callGeminiAPI(prompt, questionsOutput, questionsBtn);
+        });
+
+        communicationBtn.addEventListener('click', () => {
+            const phase = communicationPhase.value;
+            const prompt = `Escreva um rascunho de e-mail curto, claro e amigável para o corpo docente de uma escola, anunciando o início da "${phase}" do nosso projeto de inovação avaliativa. O e-mail deve: 1. Anunciar a fase. 2. Explicar brevemente o objetivo principal desta fase. 3. Informar os próximos passos ou o que esperar. Mantenha um tom positivo e colaborativo.`;
+            callGeminiAPI(prompt, communicationOutput, communicationBtn);
+        });
+
+    </script>
+</body>
+</html>
